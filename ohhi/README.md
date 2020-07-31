@@ -1,4 +1,4 @@
-# ohhi - AWS us-east-2
+# ohhi.ja4.org - AWS us-east-2
 
 TODO: Documentation.
 

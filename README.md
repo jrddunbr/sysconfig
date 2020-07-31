@@ -7,6 +7,7 @@ A set of configuration files and basic systems documentation
 * [`ctha`](ctha/README.md) - DNET Location
 * [`nyhj`](nyhj/README.md) - Eagle's Nest - **NOTICE** - Soon to be decommissioned Aug 13, 2020
 * [`vars`](vars/README.md) - VARS - Note: Not commissioning before Aug 14, 2020
+* [`vadu`](vadu/README.md) - AWS us-east-1
 * [`ohhi`](ohhi/README.md) - AWS us-east-2
 
 ## Hostname Decoding
