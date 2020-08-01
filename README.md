@@ -58,6 +58,8 @@ All the hostnames are on top of the infrastructure TLD, `ja4.org`.
 * `u` - Ubiquiti
 * `v` - Virtual Machine/Container
 * `f` - Media Converter (for fiber)
+* `r` - Raspberry Pi
+* `a` - ARM System
 
 ### Examples:
 
