@@ -1,5 +1,5 @@
 graph {
-    optimum_modem
+    nyhjmdm01n
     nyhjrtr04p
     nyhjmsw01t
     subgraph switches {
@@ -12,15 +12,15 @@ graph {
     nyhjrch01d
     nyhjufw01u
     nyhjufw02u
-    nyhjvct01c
+    nyhjvct01o
 
-    optimum_modem -- nyhjrtr04p
+    nyhjmdm01n -- nyhjrtr04p
     nyhjrtr04p -- nyhjmsw01t
     nyhjmsw01t -- nyhjfcv01f
     nyhjmsw01t -- nyhjmsw02t [label="32m Ethernet"]
     nyhjfcv01f -- nyhjmsw03t [color="orange", label="45m SM Fiber"]
     nyhjmsw02t -- nyhjufw01u
-    nyhjmsw02t -- nyhjvct01c
+    nyhjmsw02t -- nyhjvct01o
     nyhjmsw03t -- nyhjufw02u
     nyhjmsw03t -- nyhjwin01d
     nyhjmsw03t -- nyhjrch01d

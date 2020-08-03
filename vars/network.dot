@@ -1,14 +1,14 @@
 graph {
-  verizon_modem
+  varsotn01f
   varsrtr01p
-  varsswm01s
+  varsswm01t
   varsrch01d
   varswin01d
   varsufw01u
-  
-  verizon_modem -- varsrtr01p
-  varsrtr01p -- varsswm01s
-  varsswm01s -- varsrch01d
-  varsswm01s -- varswin01d
-  varsswm01s -- varsufw01u
+
+  varsotn01f -- varsrtr01p
+  varsrtr01p -- varsswm01t
+  varsswm01t -- varsrch01d
+  varsswm01t -- varswin01d
+  varsswm01t -- varsufw01u
 }

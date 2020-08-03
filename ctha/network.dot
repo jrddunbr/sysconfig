@@ -1,12 +1,12 @@
 graph {
-    spectrum_modem
+    cthamdm01n
     cthartr01p
     cthamsw01s
     cthaufw01u
     cthamlp01l
     ctlawin01d
 
-    spectrum_modem -- cthartr01p
+    cthamdm01n -- cthartr01p
     cthartr01p -- cthamsw01s
     cthamsw01s -- cthaufw01u
     cthamsw01s -- cthamlp01l

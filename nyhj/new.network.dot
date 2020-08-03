@@ -1,0 +1,24 @@
+graph {
+    nyhjmdm01n
+    nyhjrtr05n
+    nyhjmsw01t
+    nyhjfcv01f
+    nyhjfcv02f
+    nyhjufw01u
+    nyhjvct01o
+
+    subgraph endpoints {
+        rank=same
+        nyhjmsw02t
+        nyhjufw02u
+    }
+
+    nyhjmdm01n -- nyhjrtr05n
+    nyhjrtr05n -- nyhjmsw01t
+    nyhjmsw01t -- nyhjfcv01f
+    nyhjmsw01t -- nyhjmsw02t [label="32m Ethernet"]
+    nyhjfcv01f -- nyhjfcv02f [color="orange", label="45m SM Fiber"]
+    nyhjmsw02t -- nyhjufw01u
+    nyhjmsw02t -- nyhjvct01o
+    nyhjfcv02f -- nyhjufw02u
+}

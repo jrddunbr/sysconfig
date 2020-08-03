@@ -1,14 +1,14 @@
 # sysconfig
 
-A set of configuration files and basic systems documentation
+A set of configuration files and basic systems documentation for systems I maintain.
 
 ## Locations
 
 * [`ctha`](ctha/README.md) - DNET Location
-* [`nyhj`](nyhj/README.md) - Eagle's Nest - **NOTICE** - Soon to be decommissioned Aug 13, 2020
+* [`nyhj`](nyhj/README.md) - Eagle's Nest
 * [`vars`](vars/README.md) - VARS - Note: Not commissioning before Aug 14, 2020
-* [`vadu`](vadu/README.md) - AWS us-east-1
-* [`ohhi`](ohhi/README.md) - AWS us-east-2
+* [`vadu`](vadu/README.md) - us-east-1 (aws)
+* [`ohhi`](ohhi/README.md) - us-east-2 (aws)
 
 ## Hostname Decoding
 
@@ -22,7 +22,7 @@ All the hostnames are on top of the infrastructure TLD, `ja4.org`.
 
 ### Location Code
 
-4 character location code (generally, 2 letters of state and 2 letters of city)
+4 character location code (generally, 2 letters of state and 2 letters of city), only letters `a-z`
 
 * `ctha` - DNET
 * `nyhj` - Eagle's Nest
@@ -30,13 +30,17 @@ All the hostnames are on top of the infrastructure TLD, `ja4.org`.
 
 ### Purpose Code
 
-3 character purpose code (service)
+3 character purpose code (service), only letters `a-z`
 
 * Network Infrastructure:
     * `rtr` - Router
+    * `mtr` - Modem Router Combo (ick!)
+    * `otn` - Fiber POP Box
+    * `mdm` - Cable Modem
     * `msw` - Managed Switch
     * `usw` - Unmanaged Switch
     * `ufw` - Unifi WiFi Dish
+    * `vct` - Verizon Cell Tower
 * General computing devices:
     * `gln` - General Linux System
     * `rch` - Arch Linux
@@ -47,23 +51,36 @@ All the hostnames are on top of the infrastructure TLD, `ja4.org`.
     * `cth` - Container Host
     * `eln` - Probably related to [eln2](https://eln2.org)
     * `git` - Git Server (likely Gitea)
+    * `web` - Web Server (of some kind)
 
 ### Device Type
 
-* `p` - PC Engines APU
-* `s` - Server
+Only letters `a-z`
+
+* `a` - ARM System
+* `c` - Cisco
 * `d` - Desktop
+* `f` - Media Converter (for fiber)
 * `l` - Laptop
+* `m` - MicroTik
+* `n` - Stands for "Not Worthy" (but works). Typically, some consumer-y device.
+* `o` - Other
+* `p` - PC Engines APU
+* `r` - Raspberry Pi
+* `s` - Server
 * `t` - TP-Link
 * `u` - Ubiquiti
 * `v` - Virtual Machine/Container
-* `f` - Media Converter (for fiber)
-* `r` - Raspberry Pi
-* `a` - ARM System
 
 ### Examples:
 
-`nyhjrtr04p` - Router located at Eagle's Nest, it's the 4th router iteration and it's a PC Engines device (apu3c4).
+`cthartr01p` - Router located at DNET, it's the 1st router iteration, and it's a PC Engines device (apu3c4).
+
+## Generating DOT files on Linux
+
+```shell script
+dot -Tpng network.dot -o network.png
+```
 
 ## Generating DOT files from Git Bash
 
