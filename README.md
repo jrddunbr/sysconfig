@@ -4,9 +4,9 @@ A set of configuration files and basic systems documentation for systems I maint
 
 ## Locations
 
-* [`ctha`](ctha/README.md) - DNET Location
+* [`ctha`](ctha/README.md) - DNET
 * [`nyhj`](nyhj/README.md) - Eagle's Nest
-* [`vars`](vars/README.md) - VARS - Note: Not commissioning before Aug 14, 2020
+* [`vars`](vars/README.md) - VARS
 * [`vadu`](vadu/README.md) - us-east-1 (aws)
 * [`ohhi`](ohhi/README.md) - us-east-2 (aws)
 
