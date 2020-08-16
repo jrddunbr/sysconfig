@@ -1,10 +1,5 @@
 { config, pkgs, ... }:
 
-# NOTICE!
-#
-# varsrtr01p.ja4.org will not be commissioned until August 14th, 2020
-#   at the earliest, and hopefully no later than August 16th, 2020
-
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -47,7 +42,7 @@
     };
 
     bridges = {
-      br1.interfaces = [ "enp0s16u2" ];
+      br1.interfaces = [ "enp2s0" ];
       br2_dhcp.interfaces = [ "v2_dhcp" ];
       br3_servers.interfaces = [ "v3_servers" ];
     };
@@ -55,6 +50,10 @@
     nat.enable = true;
     nat.externalInterface = "enp0s16u2";
     nat.internalInterfaces = [ "br1" "br2_dhcp" "br3_servers" ];
+
+    firewall.allowedTCPPorts = [ 22 ];
+    firewall.interfaces.br1.allowedTCPPorts = [ 8080 8443 8880 8843 6789 27117 ];
+    firewall.interfaces.br1.allowedUDPPorts = [ 3478 5514 10001 1900 ];
 
     nat.forwardPorts = [
       # Minecraft
@@ -84,9 +83,9 @@
       }
 
       subnet 10.0.2.0 netmask 255.255.255.0 {
-        range 10.4.0.100 10.4.0.199;
+        range 10.0.2.100 10.0.2.199;
         option subnet-mask 255.255.255.0;
-        option routers 10.4.0.1;
+        option routers 10.2.0.1;
         option domain-name-servers 8.8.8.8;
         authoritative;
       }
@@ -101,6 +100,14 @@
 
   services.openssh.enable = true;
   security.sudo.wheelNeedsPassword = false;
+
+  nixpkgs.config.allowUnfree = true;
+
+  services.unifi = {
+    enable = true;
+    unifiPackage = pkgs.unifiStable;
+    openPorts = false; # Too unrestrictive
+  };
 
   users.users.jared = {
     isNormalUser = true;
