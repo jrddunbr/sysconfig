@@ -6,6 +6,10 @@ graph {
   win01d
   wifi01u
   vmh01d
+  print01hp
+  nest01go
+  alexa01az
+  cph01m
 
   ont01mc -- rtr01pce
   rtr01pce -- swm01tp
@@ -13,4 +17,7 @@ graph {
   swm01tp -- win01d
   swm01tp -- wifi01u
   swm01tp -- vmh01d
+  wifi01u -- print01hp [style=dashed, color=blue]
+  wifi01u -- nest01go [style=dashed, color=blue]
+  wifi01u -- alexa01az [style=dashed, color=blue]
 }

@@ -3,12 +3,8 @@ graph {
     rtr01pce
     msw01tp
     wifi01u
-    mlp01l
-    win01d
 
     mdm01c -- rtr01pce
     rtr01pce -- msw01tp
     msw01tp -- wifi01u
-    msw01tp -- mlp01l
-    msw01tp -- win01d
 }

@@ -7,9 +7,15 @@ There are no (reasonable) configuration files to put in this folder.
 
 ![Network Topology](network.png)
 
-## Configurations
+## Documentation
 
-* `nyhjmdm01n` is `192.168.100.1` (to be renamed to `mdm01nw.nyhj.ja4.org`)
-* `nyhjrtr05n` is `192.168.10.1` (to be renamed to `rtr05nw.nyhj.ja4.org`)
-* `nyhjmsw01t` is `192.168.10.2` (to be renamed to `msw01tp.nyhj.ja4.org`)
-* Everything else is dynamic IP
+| Hostname | Sticker | IP | Description |
+| --- | --- | --- | --- |
+| `mdm01nw` | `nyhjmdm01n` | `192.168.100.1` | Modem |
+| `rtr05nw` | `nyhjrtr05n` | `192.168.10.1` | Router |
+| `msw01tp` | `nyhjmsw01t` | `192.168.10.2` | TP Link TL-SG105E |
+| `fcv01mc` | `nyhjfcv01f` | N/A | TP Link MC220L |
+| `fcv02mc` | `nyhjfcv02f` | N/A | TP Link MC220L |
+| `wifi01u` | `nyhjufw01u` | DHCP | Unifi WiFi AC LR |
+| `wifi02u` | `nyhjufw02u` | DHCP | Unifi WiFi AC LR |
+| `cell01o` | `nyhjvct01o` | DHCP | Verizon Cell Tower |
