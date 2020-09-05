@@ -1,14 +1,14 @@
 graph {
-    cthamdm01n
-    cthartr01p
-    cthamsw01s
-    cthaufw01u
-    cthamlp01l
-    ctlawin01d
+    mdm01c
+    rtr01pce
+    msw01tp
+    wifi01u
+    mlp01l
+    win01d
 
-    cthamdm01n -- cthartr01p
-    cthartr01p -- cthamsw01s
-    cthamsw01s -- cthaufw01u
-    cthamsw01s -- cthamlp01l
-    cthamsw01s -- ctlawin01d
+    mdm01c -- rtr01pce
+    rtr01pce -- msw01tp
+    msw01tp -- wifi01u
+    msw01tp -- mlp01l
+    msw01tp -- win01d
 }

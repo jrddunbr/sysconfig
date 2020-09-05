@@ -1,10 +1,5 @@
 { config, lib, pkgs, ... }:
 
-# NOTICE!
-#
-# varsrtr01p.ja4.org will not be commissioned until August 14th, 2020
-#   at the earliest, and hopefully no later than August 16th, 2020
-
 {
   imports =
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>

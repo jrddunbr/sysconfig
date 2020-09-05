@@ -7,6 +7,5 @@
 ## Configurations
 
 * varsrtr01p
-    * [Fiber Config](configuration.fiber.nix)
-    * [LTE Config](configuration.lte.nix)
-    * [Hardware Config](hardware-configuration.nix)
+    * [Router Config](rtr01pce.nix)
+    * [Hardware Config](rtr01pce.hardware-configuration.nix)

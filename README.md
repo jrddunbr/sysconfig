@@ -1,80 +1,152 @@
 # sysconfig
 
-A set of configuration files and basic systems documentation for systems I maintain.
+A set of configuration files and basic systems' documentation, for systems I maintain.
+
+## Table of Contents
+
+* [Locations](README.md#locations)
+* [Hostname Decoding](README.md#hostname-decoding)
+    * [Location Jumps](README.md#location-jumps)
+    * [Host Decoding](README.md#host-decoding)
+    * [Legacy Host Decoding](README.md#legacy-hostname-decoding)
+        * [Legacy Location Code](README.md#legacy-location-code)
+        * [Legacy Purpose Code](README.md#legacy-purpose-code)
+        * [Legacy Device Type](README.md#legacy-device-type)
+* [Generating Dot files on Linux](README.md#generating-dot-files-on-linux)
+* [Generating Dot files from Git Bash](README.md#generating-dot-files-from-git-bash)
 
 ## Locations
 
 * [`ctha`](ctha/README.md) - DNET
 * [`nyhj`](nyhj/README.md) - Eagle's Nest
 * [`vars`](vars/README.md) - VARS
-* [`vadu`](vadu/README.md) - us-east-1 (aws)
-* [`ohhi`](ohhi/README.md) - us-east-2 (aws)
+* [`aws-us-east-1`](aws-us-east-1/README.md) - us-east-1 (aws)
+* [`aws-us-east-2`](aws-us-east-2/README.md) - us-east-2 (aws)
 
 ## Hostname Decoding
 
-There are two styles of hostnames - location alias codes and hostnames.
+There are three kinds of hostnames - proper hostnames, location jumps, and legacy hostnames.
 
-* The location alias codes are for a particular location router, they are the four letter location code, followed by the TLD.
-* The regular hostnames are all as follows:
-    * `[location code][purpose code][number][device type]`
+### Location Jumps
 
-All the hostnames are on top of the infrastructure TLD, `ja4.org`.
+A location jump is used to jump from one server to another within a logical region.
 
-### Location Code
+The format is a location domain directly off the subdomain.
 
-4 character location code (generally, 2 letters of state and 2 letters of city), only letters `a-z`
+A location can be defined as something like `vars.ja4.org` or `aws-us-east-1.ja4.org`.
 
-* `ctha` - DNET
-* `nyhj` - Eagle's Nest
-* `vars` - VARS
+A location jump generally just uses the location code, but in some cases, a DNS record may be created called `jump`.
 
-### Purpose Code
+For instance, if a server fronts a website, but you have to jump somewhere else, `jump.<location.ja4.org` will get there.
 
-3 character purpose code (service), only letters `a-z`
+### Host Decoding
+
+The hostname is made up of 5 parts:
+
+* Purpose code, a 2 or more character code that defines precisely the server's purpose
+* Identity code, a 2 digit number
+* Hardware Type code, an optional 0-3 character code
+    * If omitted, the type code is actually a compressed form of `v`
+* Region, a basic string that is unique to the location
+* Domain, the infrastructure domain (`ja4.org`)
+
+Examples of possible domains:
+
+* `nix01v.vars.ja4.org`
+* `git01.aws-us-east-1.ja4.org`
+* `rtr02d.ctha.ja4.org`
+
+#### Regions
+
+Regions have generally two formats - a 2 character state and city, or, a cloud company followed by their region name.
+
+Home examples:
+
+* `ctha`
+* `nyhj`
+* `vars`
+
+Cloud examples:
+
+* `aws-us-east-1`
+* `aws-us-east-2`
+* `aws-us-west-2`
+* `google-us-east1`
+* `azure-eastus`
+
+#### Purpose Codes
+
+Purpose codes can be two or more alphanumeric characters.
 
 * Network Infrastructure:
     * `rtr` - Router
-    * `mtr` - Modem Router Combo (ick!)
+    * `mdmrtr` - Modem Router Combo (ick!)
     * `otn` - Fiber POP Box
     * `mdm` - Cable Modem
     * `msw` - Managed Switch
-    * `usw` - Unmanaged Switch
-    * `ufw` - Unifi WiFi Dish
-    * `vct` - Verizon Cell Tower
+    * `sw` - Unmanaged Switch
+    * `wifi` - WiFi Dish
+    * `cell` - Cell Tower
 * General computing devices:
-    * `gln` - General Linux System
-    * `rch` - Arch Linux
-    * `gwn` - General Windows System
-    * `win` - Windows 10
+    * `linux` - General Linux System
+    * `arch` - Arch Linux
+    * `win` - MS Windows
+    * `nixos` - NixOS
 * Purpose Built Machines:
-    * `vmh` - VM Host
-    * `cth` - Container Host
+    * `vmh` - VM Host (Can also have containers)
     * `eln` - Probably related to [eln2](https://eln2.org)
     * `git` - Git Server (likely Gitea)
     * `web` - Web Server (of some kind)
+    * `resume` - For my resume and CV, of course
+    
+#### Device Types
 
-### Device Type
+0-3 characters from `a-z` , with the field omitted meaning `v`.
 
-Only letters `a-z`
-
-* `a` - ARM System
-* `c` - Cisco
+* `arm` - ARM System
+* `cis` - Cisco
 * `d` - Desktop
-* `f` - Media Converter (for fiber)
+* `mc` - Media Converter (for fiber)
 * `l` - Laptop
-* `m` - MicroTik
-* `n` - Stands for "Not Worthy" (but works). Typically, some consumer-y device.
+* `mt` - MicroTik
+* `nw` - Stands for "Not Worthy" (but works). Typically, some consumer-y device.
 * `o` - Other
-* `p` - PC Engines APU
-* `r` - Raspberry Pi
+* `pce` - PC Engines APU
+* `rpi` - Raspberry Pi
 * `s` - Server
-* `t` - TP-Link
+* `tpl` - TP-Link
 * `u` - Ubiquiti
 * `v` - Virtual Machine/Container
 
-### Examples:
+### Legacy Hostname Decoding
 
-`cthartr01p` - Router located at DNET, it's the 1st router iteration, and it's a PC Engines device (apu3c4).
+Legacy hostnames are only left because they are physically labeled with stickers at `nyhj`. This will hopefully be remediated in November 2020.
+
+* The regular hostnames are all as follows:
+    * `[location code][purpose code][number][device type]`
+
+#### Legacy Location Code
+
+* `nyhj` - Eagle's Nest
+
+#### Legacy Purpose Code
+
+* Network Infrastructure:
+    * `rtr` - Router (one at `nyhj`)
+    * `mdm` - Cable Modem (one at `nyhj`)
+    * `msw` - Managed Switch (one at `nyhj`)
+    * `ufw` - Unifi WiFi Dish (two at `nyhj`)
+    * `vct` - Verizon Cell Tower (one at `nyhj`)
+
+#### Legacy Device Type
+
+Only letters `a-z`
+
+* `f` - Media Converter (for fiber)
+* `n` - Stands for "Not Worthy" (but works). Typically, some consumer-y device.
+* `o` - Other
+* `t` - TP-Link
+* `u` - Ubiquiti
 
 ## Generating DOT files on Linux
 

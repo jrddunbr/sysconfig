@@ -12,7 +12,7 @@
   boot.kernelParams = [ "console=ttyS0,115200" ];
 
   networking = {
-    hostName = "cthartr01p";
+    hostName = "rtr01pce";
     wireless.enable = false;
     useDHCP = false;
 
@@ -71,23 +71,8 @@
   add_header Referrer-Policy "no-referrer" always;
   # erg.. fix this eventually.
   add_header Content-Security-Policy 'self' always;
-  error_page 404 500 =200 https://ja13.org/error;
 '';
     virtualHosts = {
-      ja13_org = {
-        default = true;
-        serverName = "ja13.org";
-        root = "/srv/http/http";
-        addSSL = true;
-        enableACME = true;
-        locations."/" = {
-          index = "index.html";
-          extraConfig = ''
-autoindex on;
-try_files $uri $uri/ $uri.html $uri.pdf;
-'';
-        };
-      };
       irc_ja13_org = {
         serverName = "irc.ja13.org";
         addSSL = true;
@@ -102,7 +87,6 @@ try_files $uri $uri/ $uri.html $uri.pdf;
 
   security.acme.acceptTerms = true;
   security.acme.certs = {
-    "ja13.org".email = "jrddunbr@gmail.com";
     "irc.ja13.org".email = "jrddunbr@gmail.com";
   };
 
@@ -139,5 +123,5 @@ try_files $uri $uri/ $uri.html $uri.pdf;
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE7MRJEMwHMb5H5kZz6ws8pEwu4uWu0UhFDZ77dEVlxU jared@jrd-ryzen" ];
   };
 
-  system.stateVersion = "20.03"; # Did you read the comment?
+  system.stateVersion = "20.03";
 }

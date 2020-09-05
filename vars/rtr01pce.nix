@@ -12,14 +12,13 @@
   boot.kernelParams = [ "console=ttyS0,115200" ];
 
   networking = {
-    hostName = "varsrtr01p";
+    hostName = "rtr01pce";
     wireless.enable = false;
     useDHCP = false;
 
     nameservers = [ "8.8.8.8" ];
 
-	interfaces.enp0s16u2.useDHCP = true;
-    interfaces.enp1s0.useDHCP = false;
+    interfaces.enp1s0.useDHCP = true;
     interfaces.enp2s0.useDHCP = false;
     interfaces.enp3s0.useDHCP = false;
 
@@ -48,12 +47,18 @@
     };
 
     nat.enable = true;
-    nat.externalInterface = "enp0s16u2";
+    nat.externalInterface = "enp1s0";
     nat.internalInterfaces = [ "br1" "br2_dhcp" "br3_servers" ];
 
-    firewall.allowedTCPPorts = [ 22 ];
-    firewall.interfaces.br1.allowedTCPPorts = [ 8080 8443 8880 8843 6789 27117 ];
-    firewall.interfaces.br1.allowedUDPPorts = [ 3478 5514 10001 1900 ];
+    firewall.allowedTCPPorts = [
+      22 # External SSH
+     ];
+    firewall.interfaces.br1.allowedTCPPorts = [
+      8080 8443 8880 8843 6789 27117 # Unifi Controller
+    ];
+    firewall.interfaces.br1.allowedUDPPorts = [
+      3478 5514 10001 1900 # Unifi Controller
+    ];
 
     nat.forwardPorts = [
       # Minecraft

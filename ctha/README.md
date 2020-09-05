@@ -7,5 +7,5 @@
 ## Configurations
 
 * cthartr01p
-    * [Router Config](configuration.nix)
-    * [Hardware Config](hardware-configuration.nix)
+    * [Router Config](rtr01pce.nix)
+    * [Hardware Config](rtr01pce.hardware-configuration.nix)

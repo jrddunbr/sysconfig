@@ -1,14 +1,16 @@
 graph {
-  varsotn01f
-  varsrtr01p
-  varsswm01t
-  varsrch01d
-  varswin01d
-  varsufw01u
+  ont01mc
+  rtr01pce
+  swm01tp
+  arch01d
+  win01d
+  wifi01u
+  vmh01d
 
-  varsotn01f -- varsrtr01p
-  varsrtr01p -- varsswm01t
-  varsswm01t -- varsrch01d
-  varsswm01t -- varswin01d
-  varsswm01t -- varsufw01u
+  ont01mc -- rtr01pce
+  rtr01pce -- swm01tp
+  swm01tp -- arch01d
+  swm01tp -- win01d
+  swm01tp -- wifi01u
+  swm01tp -- vmh01d
 }

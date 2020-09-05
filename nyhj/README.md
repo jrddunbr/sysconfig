@@ -9,10 +9,7 @@ There are no (reasonable) configuration files to put in this folder.
 
 ## Configurations
 
-* `nyhjmdm01n` is `192.168.100.1`
-* `nyhjrtr05n` is `192.168.10.1`
-* `nyhjmsw` is `192.168.10.2`
+* `nyhjmdm01n` is `192.168.100.1` (to be renamed to `mdm01nw.nyhj.ja4.org`)
+* `nyhjrtr05n` is `192.168.10.1` (to be renamed to `rtr05nw.nyhj.ja4.org`)
+* `nyhjmsw01t` is `192.168.10.2` (to be renamed to `msw01tp.nyhj.ja4.org`)
 * Everything else is dynamic IP
-
-Hopefully, there will be a Raspberry Pi 3 installed on the WiFi that communicates via Wireguard to some systems in
-`ohhi`, but that is yet to be implemented.
