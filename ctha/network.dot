@@ -1,10 +1,10 @@
 graph {
-    mdm01c
+    mdm01cis
     rtr01pce
-    msw01tp
+    msw01tpl
     wifi01u
 
-    mdm01c -- rtr01pce
-    rtr01pce -- msw01tp
-    msw01tp -- wifi01u
+    mdm01cis -- rtr01pce
+    rtr01pce -- msw01tpl
+    msw01tpl -- wifi01u
 }

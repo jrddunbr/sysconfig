@@ -270,40 +270,103 @@ def fancy_aws_region(aws_region):
     if aws_region == "me-south-1":
         return aws_region, "Bahrain"
 
+def tests():
+    print("Empty Hostname Test:")
+    print(hostname_information(""))
 
-print("Empty Hostname Test:")
-print(hostname_information(""))
+    print("Some missing info test:")
+    print(hostname_information("rtr01pce"))
+    print(hostname_information("rtr01pce.vars"))
+    print(hostname_information("rtr01pce.vars.ja4"))
 
-print("Some missing info test:")
-print(hostname_information("rtr01pce"))
-print(hostname_information("rtr01pce.vars"))
-print(hostname_information("rtr01pce.vars.ja4"))
+    print("Basic router test:")
+    nn = hostname_information("rtr01pce.vars.ja4.org")
+    print(nn)
+    print(build_hostname_tuple(nn))
+    print(fancy_region(nn[3]))
+    print(fancy_purpose(nn[0]))
+    print(detailed_host_information("rtr01pce.vars.ja4.org"))
 
-print("Basic router test:")
-nn = hostname_information("rtr01pce.vars.ja4.org")
-print(nn)
-print(build_hostname_tuple(nn))
-print(fancy_region(nn[3]))
-print(fancy_purpose(nn[0]))
-print(detailed_host_information("rtr01pce.vars.ja4.org"))
+    print("Basic VM test (with v)")
+    n2 = hostname_information("git01v.aws-us-east-1.ja4.org")
+    print(n2)
+    print(detailed_host_information("git01v.aws-us-east-1.ja4.org"))
+    print("Basic VM test (without v)")
+    n3 = hostname_information("git01.aws-us-east-1.ja4.org")
+    print(n3)
+    print(build_hostname_tuple(n2))
+    print(build_hostname_tuple(n3))
+    print("Basic VM region data:")
+    print(fancy_region(n2[3]))
 
-print("Basic VM test (with v)")
-n2 = hostname_information("git01v.aws-us-east-1.ja4.org")
-print(n2)
-print(detailed_host_information("git01v.aws-us-east-1.ja4.org"))
-print("Basic VM test (without v)")
-n3 = hostname_information("git01.aws-us-east-1.ja4.org")
-print(n3)
-print(build_hostname_tuple(n2))
-print(build_hostname_tuple(n3))
-print("Basic VM region data:")
-print(fancy_region(n2[3]))
+    print("Legacy Region test:")
+    lhn = hostname_information("nyhjrtr05n.ja4.org")
+    print(lhn)
+    print(build_hostname_tuple(lhn))
 
-print("Legacy Region test:")
-lhn = hostname_information("nyhjrtr05n.ja4.org")
-print(lhn)
-print(build_hostname_tuple(lhn))
+    print("Other region tests:")
+    print(detailed_host_information("web31v.google-us-east4.ja4.org"))
+    print(detailed_host_information("nixos20v.azure-northcentralus.ja4.org"))
 
-print("Other region tests:")
-print(detailed_host_information("web31v.google-us-east4.ja4.org"))
-print(detailed_host_information("nixos20v.azure-northcentralus.ja4.org"))
+
+def get_files(folder_path):
+    from os import listdir
+    from os.path import isfile, join
+    return [join(folder_path, f) for f in listdir(folder_path) if isfile(join(folder_path, f))]
+
+
+def get_folders(folder_path):
+    from os import listdir
+    from os.path import isdir, join
+    return [f for f in listdir(folder_path) if isdir(join(folder_path, f))]
+
+
+def give_strings(data):
+    strings = []
+    build = ""
+    for i in range(0, len(data)):
+        if (data[i] in (string.ascii_letters + string.digits)):
+            build += data[i]
+        else:
+            strings.append(build)
+            build = ""
+    strings.append(build)
+    return [x for x in list(set([x for x in strings if x != ""])) if len([y for y in x if y in string.digits]) >= 2]
+
+
+def hostname_report():
+    from os import listdir
+    from os.path import isfile, join
+    path = "/sysconfig"
+    dotfiles = []
+    dotfolders = get_folders(path)
+    for folder in dotfolders:
+        dotfiles += [x for x in get_files(path + "/" + folder) if "." in x and x.rsplit(".",1)[1].strip() == "dot"]
+
+    hostname_list = []
+
+    for file in dotfiles:
+        f = open(file, "r")
+        data = f.read()
+        f.close()
+        hostname_list += give_strings(data)
+
+
+    purpose_list = []
+    hardware_type_list = []
+    for host in hostname_list:
+        purpose, _, hardware_type, _, _ = hostname_information(host)
+        if purpose not in purpose_list:
+            purpose_list.append(purpose)
+        if hardware_type not in hardware_type_list:
+            hardware_type_list.append(hardware_type)
+
+    purpose_list.sort()
+    hardware_type_list.sort()
+
+    print(purpose_list)
+    print(hardware_type_list)
+
+
+#tests()
+hostname_report()

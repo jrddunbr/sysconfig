@@ -1,7 +1,7 @@
 graph {
   ont01mc
   rtr01pce
-  swm01tp
+  swm01tpl
   arch01d [label="arch01d/win01d"]
   wifi01u
   vmh01d
@@ -11,11 +11,12 @@ graph {
   cph01m
 
   ont01mc -- rtr01pce
-  rtr01pce -- swm01tp
-  swm01tp -- arch01d
-  swm01tp -- wifi01u
-  swm01tp -- vmh01d
+  rtr01pce -- swm01tpl
+  swm01tpl -- arch01d
+  swm01tpl -- wifi01u
+  swm01tpl -- vmh01d
   wifi01u -- print01hp [style=dashed, color=blue]
   wifi01u -- nest01go [style=dashed, color=blue]
   wifi01u -- alexa01az [style=dashed, color=blue]
+  wifi01u -- cph01m [style=dashed, color=blue]
 }

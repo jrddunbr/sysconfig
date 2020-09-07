@@ -2,7 +2,7 @@
 
 A set of configuration files and basic systems' documentation, for systems I maintain.
 
-The license is MIT across most (Nix) files. 
+The license is MIT across most (Nix) files.
 Proper (python) source code is currently All Rights Reserved, for now (as noted at the top of relevant files).
 
 ## Table of Contents
@@ -82,35 +82,47 @@ Cloud examples:
 Purpose codes can be two or more alphanumeric characters.
 
 * Network Infrastructure:
-    * `rtr` - Router
-    * `mdmrtr` - Modem Router Combo (ick!)
-    * `otn` - Fiber POP Box
+    * `cell` - Cell Tower
+    * `fcv` - Fiber converter
     * `mdm` - Cable Modem
+    * `mdmrtr` - Modem Router Combo (ick!)
     * `msw` - Managed Switch
+    * `otn` - Fiber POP Box
+    * `rtr` - Router
     * `sw` - Unmanaged Switch
     * `wifi` - WiFi Dish
-    * `cell` - Cell Tower
+
 * General computing devices:
-    * `linux` - General Linux System
     * `arch` - Arch Linux
-    * `win` - MS Windows
+    * `linux` - General Linux System
     * `nixos` - NixOS
+    * `win` - MS Windows
 * Purpose Built Machines:
-    * `vmh` - VM Host (Can also have containers)
     * `eln` - Probably related to [eln2](https://eln2.org)
     * `git` - Git Server (likely Gitea)
-    * `web` - Web Server (of some kind)
     * `resume` - For my resume and CV, of course
-    
+    * `vmh` - VM Host (Can also have containers)
+    * `web` - Web Server (of some kind)
+* Other Stuff
+    * `alexa` - Amazon Alexa
+    * `next` - Google Nest
+    * `cph` - Cell Phone
+    * `print` - Printer
+
 #### Device Types
 
 0-3 characters from `a-z` , with the field omitted meaning `v`.
 
 * `arm` - ARM System
+* `az` - Amazon
 * `cis` - Cisco
 * `d` - Desktop
-* `mc` - Media Converter (for fiber)
+* `fc` - Fiber Converter
+* `go` - Google
+* `hp` - HP
 * `l` - Laptop
+* `m` - Mobile (cell phone)
+* `mc` - Media Converter (for fiber)
 * `mt` - MicroTik
 * `nw` - Stands for "Not Worthy" (but works). Typically, some consumer-y device.
 * `o` - Other

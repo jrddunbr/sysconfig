@@ -1,7 +1,7 @@
 graph {
-    mdm01c [label="mdm01c (nyhjmdm01n)"]
+    mdm01cis [label="mdm01cis (nyhjmdm01n)"]
     rtr05nw [label="rtr05nw (nyhjrtr05n)"]
-    msw01tp [label="msw01tp (nyhjmsw01t)"]
+    msw01tpl [label="msw01tpl (nyhjmsw01t)"]
     fcv01mc [label="fcv01mc (nyhjfcv01f)"]
     fcv02mc [label="fcv02mc (nyhjfcv02f)"]
     wifi01u [label="wifi01u (nyhjufw01u)"]
@@ -11,14 +11,14 @@ graph {
     subgraph endpoints {
         rank=same
         fcv02mc
-        msw01tp
+        msw01tpl
     }
 
-    mdm01c -- rtr05nw
+    mdm01cis -- rtr05nw
     rtr05nw -- fcv01mc
-    rtr05nw -- msw01tp [label="32m Ethernet"]
+    rtr05nw -- msw01tpl [label="32m Ethernet"]
     fcv01mc -- fcv02mc [color="orange", label="45m SM Fiber"]
     fcv02mc -- wifi01u
-    msw01tp -- cell01o
-    msw01tp -- wifi02u
+    msw01tpl -- cell01o
+    msw01tpl -- wifi02u
 }
