@@ -3,7 +3,6 @@
 These are some various application configurations that I have.
 
 
-
 ## Resume/CV
 
 File: [resume.nix](resume.nix)
@@ -15,3 +14,9 @@ nix-build resume.nix
 ```
 
 The output will be *somewhere* in the nix store, which it will print out on completion. Initial run can take a while as it needs to download most of the LaTeX packages out there to build my resume.
+
+## Hostname Details
+
+File: [hostname.py](hostname.py)
+
+This file has some useful methods for getting information about a FQDN on my network.

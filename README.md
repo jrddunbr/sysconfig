@@ -2,6 +2,9 @@
 
 A set of configuration files and basic systems' documentation, for systems I maintain.
 
+The license is MIT across most (Nix) files. 
+Proper (python) source code is currently All Rights Reserved, for now (as noted at the top of relevant files).
+
 ## Table of Contents
 
 * [Locations](README.md#locations)
