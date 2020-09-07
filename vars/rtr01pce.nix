@@ -109,6 +109,11 @@
         fixed-address 10.0.0.10;
       }
 
+      host wifi01u {
+        hardware ethernet e0:63:da:30:cd:77;
+        fixed-address 10.0.0.3;
+      }
+
       host printer01hp {
         hardware ethernet b0:5c:da:fa:2e:25;
         fixed-address 10.0.2.20;
