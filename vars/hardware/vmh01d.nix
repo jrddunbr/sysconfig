@@ -8,8 +8,8 @@
 
 
   services.udev.extraRules = "
-  KERNEL=\"*\", ATTR(address)==\"08:9e:01:cc:92:5d\", NAME=\"ethernet0\"\n
-  KERNEL=\"*\", ATTR(address)==\"58:94:6b:3c:bf:d0\", NAME=\"wifi0\"\n
+  KERNEL==\"*\", ATTR{address}==\"08:9e:01:cc:92:5d\", NAME=\"ethernet0\"\n
+  KERNEL==\"*\", ATTR{address}==\"58:94:6b:3c:bf:d0\", NAME=\"wifi0\"\n
   ";
 
   boot.loader.systemd-boot.enable = true;

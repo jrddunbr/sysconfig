@@ -5,9 +5,9 @@
     ];
 
   services.udev.extraRules = "
-  KERNEL=\"*\", ATTR(address)==\"00:0d:b9:56:20:10\", NAME=\"ethernet0\"\n
-  KERNEL=\"*\", ATTR(address)==\"00:0d:b9:56:20:11\", NAME=\"ethernet1\"\n
-  KERNEL=\"*\", ATTR(address)==\"00:0d:b9:56:20:12\", NAME=\"ethernet2\"\n
+  KERNEL==\"*\", ATTR{address}==\"00:0d:b9:56:20:10\", NAME=\"ethernet0\"\n
+  KERNEL==\"*\", ATTR{address}==\"00:0d:b9:56:20:11\", NAME=\"ethernet1\"\n
+  KERNEL==\"*\", ATTR{address}==\"00:0d:b9:56:20:12\", NAME=\"ethernet2\"\n
   ";
 
   boot.loader.grub.enable = true;
