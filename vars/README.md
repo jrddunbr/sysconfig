@@ -19,8 +19,8 @@
 
 * `rtr01pce`:
     * [Router Config](rtr01pce.nix)
-    * [Hardware Config](rtr01pce.hardware-configuration.nix)
+    * [Hardware Config](hardware/rtr01pce.nix)
 
 * `vmh01d`:
     * [VM Host Config](vmh01d.nix)
-    * [Hardware Config](vmh01d.hardware-configuration.nix)
+    * [Hardware Config](hardware/vmh01d.nix)

@@ -2,25 +2,19 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    [
+      /sysconfig/vars/hardware/rtr01pce.nix
+      /sysconfig/nix-template/base-system.nix
+      /sysconfig/nix-template/unifi.nix
+      /sysconfig/nix-template/users.nix
     ];
-
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/mmcblk0";
-  boot.kernelParams = [ "console=ttyS0,115200" ];
 
   networking = {
     hostName = "rtr01pce";
-    wireless.enable = false;
-    useDHCP = false;
 
-    nameservers = [ "8.8.8.8" ];
-
-    interfaces.enp1s0.useDHCP = true;
-    interfaces.enp2s0.useDHCP = false;
-    interfaces.enp3s0.useDHCP = false;
+    interfaces.ethernet0.useDHCP = true;
+    interfaces.ethernet1.useDHCP = false;
+    interfaces.ethernet2.useDHCP = false;
 
     interfaces.br1.ipv4.addresses =
       [ { address = "10.0.0.1"; prefixLength = 24; } ];
@@ -41,18 +35,19 @@
     };
 
     bridges = {
-      br1.interfaces = [ "enp2s0" ];
+      br1.interfaces = [ "ethernet1" ];
       br2_dhcp.interfaces = [ "v2_dhcp" ];
       br3_servers.interfaces = [ "v3_servers" ];
     };
 
     nat.enable = true;
-    nat.externalInterface = "enp1s0";
+    nat.externalInterface = "ethernet0";
     nat.internalInterfaces = [ "br1" "br2_dhcp" "br3_servers" ];
 
     firewall.allowedTCPPorts = [
       22 # External SSH
      ];
+
     firewall.interfaces.br1.allowedTCPPorts = [
       8080 8443 8880 8843 6789 27117 # Unifi Controller
     ];
@@ -70,7 +65,6 @@
       # Factorio
       #{ destination = "10.0.0.10"; proto = "udp"; sourcePort = 34197; }
     ];
-
   };
 
   services.dhcpd4 = {
@@ -96,34 +90,4 @@
       }
       '';
   };
-
-  time.timeZone = "America/New_York";
-
-  environment.systemPackages = with pkgs; [
-    wget vim htop python3 bind tcpdump
-  ];
-
-  services.openssh.enable = true;
-  security.sudo.wheelNeedsPassword = false;
-
-  nixpkgs.config.allowUnfree = true;
-
-  services.unifi = {
-    enable = true;
-    unifiPackage = pkgs.unifiStable;
-    openPorts = false; # Too unrestrictive
-  };
-
-  users.users.jared = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE7MRJEMwHMb5H5kZz6ws8pEwu4uWu0UhFDZ77dEVlxU jared@jrd-ryzen" ];
-  };
-
-  users.users.cameron = {
-    isNormalUser = true;
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDbRWc8z3PaIuMPMPGKDHuDHUVqFYZ8ra6H8pdSQwYJS" ];
-  };
-
-  system.stateVersion = "20.03";
 }

@@ -2,9 +2,18 @@
 
 {
   imports =
-    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
+    [
+      <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
+
+  services.udev.extraRules = "
+  KERNEL=\"*\", ATTR(address)==\"08:9e:01:cc:92:5d\", NAME=\"ethernet0\"\n
+  KERNEL=\"*\", ATTR(address)==\"58:94:6b:3c:bf:d0\", NAME=\"wifi0\"\n
+  ";
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
