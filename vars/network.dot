@@ -2,8 +2,7 @@ graph {
   ont01mc
   rtr01pce
   swm01tp
-  arch01d
-  win01d
+  arch01d [label="arch01d/win01d"]
   wifi01u
   vmh01d
   print01hp
@@ -14,7 +13,6 @@ graph {
   ont01mc -- rtr01pce
   rtr01pce -- swm01tp
   swm01tp -- arch01d
-  swm01tp -- win01d
   swm01tp -- wifi01u
   swm01tp -- vmh01d
   wifi01u -- print01hp [style=dashed, color=blue]

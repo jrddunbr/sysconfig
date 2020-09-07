@@ -8,12 +8,12 @@
 | --- | --- |--- |
 | `rtr01pce` | `10.1` | PC Engines Router (apu 3c4) |
 | `msw01tp` | `10.2` | TP Link T2500G-10TS |
-| `wifi01u` | DHCP | Unifi Wifi AC LR |
+| `wifi01u` | `10.3` | Unifi Wifi AC LR |
 | `vmh01d` | `10.5`  | VM Host |
-| `arch01d`, `win01d` | DHCP | Desktop |
-| `print01hp` | DHCP | HP Officejet 9015 |
-| `nest01go` | DHCP | Nest Thermostat |
-| `alexa01az` | DHCP | Alexa |
+| `arch01d`, `win01d` | `10.10` | Desktop |
+| `print01hp` | `10.0.2.20` | HP Officejet 9015 |
+| `nest01go` | `10.0.2.22` | Nest Thermostat |
+| `alexa01az` | `10.0.2.21` | Alexa |
 
 ## Configurations
 
