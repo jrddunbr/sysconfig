@@ -22,6 +22,8 @@
       [ { address = "10.0.2.1"; prefixLength = 24; } ];
     interfaces.br3_servers.ipv4.addresses =
       [ { address = "10.0.3.1"; prefixLength = 24; } ];
+    interfaces.br4_work.ipv4.addresses =
+      [ { address = "10.0.4.1"; prefixLength = 24; } ];
 
     vlans = {
       v2_dhcp = {
@@ -32,17 +34,22 @@
         id = 3;
         interface = "br1";
       };
+      v4_work = {
+        id = 4;
+        interface = "br1";
+      };
     };
 
     bridges = {
       br1.interfaces = [ "ethernet1" ];
       br2_dhcp.interfaces = [ "v2_dhcp" ];
       br3_servers.interfaces = [ "v3_servers" ];
+      br4_work.interfaces = ["v4_work"];
     };
 
     nat.enable = true;
     nat.externalInterface = "ethernet0";
-    nat.internalInterfaces = [ "br1" "br2_dhcp" "br3_servers" ];
+    nat.internalInterfaces = [ "br1" "br2_dhcp" "br3_servers" "br4_work"];
 
     firewall.allowedTCPPorts = [
       22 # External SSH
@@ -69,7 +76,7 @@
 
   services.dhcpd4 = {
     enable = true;
-    interfaces = [ "br1" "br2_dhcp" ];
+    interfaces = [ "br1" "br2_dhcp" "br4_work"];
     extraConfig = ''
       ddns-update-style none;
 
@@ -79,12 +86,40 @@
         option routers 10.0.0.1;
         option domain-name-servers 8.8.8.8;
         authoritative;
+
+        host arch01d {
+          hardware ethernet b4:2e:99:a3:eb:7e;
+          fixed-address: 10.0.0.10;
+        }
       }
 
       subnet 10.0.2.0 netmask 255.255.255.0 {
         range 10.0.2.100 10.0.2.199;
         option subnet-mask 255.255.255.0;
-        option routers 10.2.0.1;
+        option routers 10.0.2.1;
+        option domain-name-servers 8.8.8.8;
+        authoritative;
+
+        host printer01hp {
+          hardware ethernet b0:5c:da:fa:2e:25;
+          fixed-address: 10.0.2.20;
+        }
+
+        host alexa01az {
+          hardware ethernet 0c:ee:99:21:74:69;
+          fixed-address: 10.0.2.21;
+        }
+
+        host nest01go {
+          hardware ethernet 64:16:66:1f:aa:5d;
+          fixed-address: 10.0.2.22;
+        }
+      }
+
+      subnet 10.0.4.0 netmask 255.255.255.0 {
+        range 10.0.4.100 10.0.4.199;
+        option subnet-mask 255.255.255.0;
+        option routers 10.0.4.1;
         option domain-name-servers 8.8.8.8;
         authoritative;
       }
