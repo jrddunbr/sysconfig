@@ -86,11 +86,6 @@
         option routers 10.0.0.1;
         option domain-name-servers 8.8.8.8;
         authoritative;
-
-        host arch01d {
-          hardware ethernet b4:2e:99:a3:eb:7e;
-          fixed-address: 10.0.0.10;
-        }
       }
 
       subnet 10.0.2.0 netmask 255.255.255.0 {
@@ -99,21 +94,6 @@
         option routers 10.0.2.1;
         option domain-name-servers 8.8.8.8;
         authoritative;
-
-        host printer01hp {
-          hardware ethernet b0:5c:da:fa:2e:25;
-          fixed-address: 10.0.2.20;
-        }
-
-        host alexa01az {
-          hardware ethernet 0c:ee:99:21:74:69;
-          fixed-address: 10.0.2.21;
-        }
-
-        host nest01go {
-          hardware ethernet 64:16:66:1f:aa:5d;
-          fixed-address: 10.0.2.22;
-        }
       }
 
       subnet 10.0.4.0 netmask 255.255.255.0 {
@@ -122,6 +102,26 @@
         option routers 10.0.4.1;
         option domain-name-servers 8.8.8.8;
         authoritative;
+      }
+
+      host arch01d {
+        hardware ethernet b4:2e:99:a3:eb:7e;
+        fixed-address 10.0.0.10;
+      }
+
+      host printer01hp {
+        hardware ethernet b0:5c:da:fa:2e:25;
+        fixed-address 10.0.2.20;
+      }
+
+      host alexa01az {
+        hardware ethernet 0c:ee:99:21:74:69;
+        fixed-address 10.0.2.21;
+      }
+
+      host nest01go {
+        hardware ethernet 64:16:66:1f:aa:5d;
+        fixed-address 10.0.2.22;
       }
       '';
   };
