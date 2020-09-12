@@ -8,7 +8,10 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    wget vim htop git
+    wget # Get files
+    vim  # Edit files
+    htop # System Monitoring
+    git  # Provisioning
   ];
 
   services.openssh.enable = true;
