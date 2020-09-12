@@ -4,6 +4,7 @@
     [
       /sysconfig/vars/hardware/vmh01d.nix
       /sysconfig/nix-template/base-system.nix
+      /sysconfig/nix-template/vm-host.nix
       /sysconfig/nix-template/users.nix
     ];
 

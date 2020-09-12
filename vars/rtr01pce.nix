@@ -64,13 +64,7 @@
 
     nat.forwardPorts = [
       # Minecraft
-      #{ destination = "10.0.0.10"; proto = "tcp"; sourcePort = 25565; }
-      # Vintage Story
-      #{ destination = "10.0.0.10"; proto = "tcp"; sourcePort = 42424; }
-      # Xonotic
-      #{ destination = "10.0.0.10"; proto = "udp"; sourcePort = 26000; }
-      # Factorio
-      #{ destination = "10.0.0.10"; proto = "udp"; sourcePort = 34197; }
+      { destination = "10.0.0.30"; proto = "tcp"; sourcePort = 25565; }
     ];
   };
 
