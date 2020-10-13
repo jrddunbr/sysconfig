@@ -9,7 +9,7 @@
 
     virtualHosts = {
       "chat.ja13.org" = {
-        locations."/".proxyPass = "http://10.0.0.31:8056";
+        locations."/".proxyPass = "http://10.0.0.31:8065";
       };
     };
   };
