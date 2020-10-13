@@ -14,6 +14,8 @@
 | `print01hp` | `10.0.2.20` | HP Officejet 9015 |
 | `nest01go` | `10.0.2.22` | Nest Thermostat |
 | `alexa01az` | `10.0.2.21` | Alexa |
+| `eln01` | `10.0.0.30` | LL Dev Server |
+| `mm01` | `10.0.0.31` | Mattermost [https://chat.ja13.org](https://chat.ja13.org) |
 
 ## Configurations
 
