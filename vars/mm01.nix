@@ -5,6 +5,7 @@
       /sysconfig/vars/hardware/mm01.nix
       /sysconfig/nix-template/base-system.nix
       /sysconfig/nix-template/users.nix
+      /private/mattermost.nix
     ];
 
   networking = {
