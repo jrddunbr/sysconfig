@@ -2,7 +2,7 @@
 {
   imports =
     [
-      /sysconfig/vars/hardware/eln01.nix
+      /sysconfig/vars/hardware/mm01.nix
       /sysconfig/nix-template/base-system.nix
       /sysconfig/nix-template/users.nix
     ];
