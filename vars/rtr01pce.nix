@@ -7,6 +7,7 @@
       /sysconfig/nix-template/base-system.nix
       /sysconfig/nix-template/unifi.nix
       /sysconfig/nix-template/users.nix
+      /sysconfig/nix-template/vars-rtr-nginx.nix
     ];
 
   networking = {
@@ -53,6 +54,8 @@
 
     firewall.allowedTCPPorts = [
       22 # External SSH
+      80  # nginx
+      443 # nginx
      ];
 
     firewall.interfaces.br1.allowedTCPPorts = [
