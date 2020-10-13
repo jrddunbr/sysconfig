@@ -19,6 +19,5 @@
     };
   };
 
-  security.acme.acceptTerms = true;
   security.acme.certs."chat.ja13.org".email = "chat@ja13.org";
 }
