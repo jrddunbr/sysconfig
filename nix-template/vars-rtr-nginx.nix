@@ -9,8 +9,16 @@
 
     virtualHosts = {
       "chat.ja13.org" = {
-        locations."/".proxyPass = "http://10.0.0.31:8065";
+        locations."/" = {
+          proxyPass = "http://10.0.0.31:8065";
+          proxyWebsockets = true;
+          forceSSL = true;
+          enableACME = true;
+        };
       };
     };
   };
+
+  security.acme.acceptTerms = true;
+  security.acme.certs."chat.ja13.org".email = "chat@ja13.org";
 }
