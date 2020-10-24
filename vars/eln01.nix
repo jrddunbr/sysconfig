@@ -5,6 +5,7 @@
       /sysconfig/vars/hardware/eln01.nix
       /sysconfig/nix-template/base-system.nix
       /sysconfig/nix-template/eln-server.nix
+      /sysconfig/nix-template/vintage-story.nix
       /sysconfig/nix-template/users.nix
     ];
 

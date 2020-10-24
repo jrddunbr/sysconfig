@@ -68,6 +68,8 @@
     nat.forwardPorts = [
       # Minecraft
       { destination = "10.0.0.30"; proto = "tcp"; sourcePort = 25565; }
+      # Vintage Story
+      { destination = "10.0.0.30"; proto = "tcp"; sourcePort = 42420; }
     ];
   };
 
