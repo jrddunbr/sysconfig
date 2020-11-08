@@ -6,6 +6,7 @@
       /sysconfig/nix-template/base-system.nix
       /sysconfig/nix-template/eln-server.nix
       /sysconfig/nix-template/vintage-story.nix
+      /sysconfig/nix-template/factorio.nix
       /sysconfig/nix-template/users.nix
     ];
 

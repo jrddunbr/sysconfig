@@ -70,6 +70,8 @@
       { destination = "10.0.0.30"; proto = "tcp"; sourcePort = 25565; }
       # Vintage Story
       { destination = "10.0.0.30"; proto = "tcp"; sourcePort = 42420; }
+      # Factorio
+      { destination = "10.0.0.30"; proto = "udp"; sourcePort = 34197; }
     ];
   };
 
